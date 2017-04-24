@@ -1,0 +1,10 @@
+<h1>Attendee List</h1>
+{% if attendee_list %}
+    <ul>
+    {% for attendee in attendee_list %}
+        <li><a href="{% url 'detail' attendee.id %}">{{ attendee.first_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No attendee are available.</p>
+{% endif %}
