@@ -17,10 +17,10 @@ def detail(request, attendee_id):
 
 def edit(request, attendee_id):
     attendee = get_object_or_404(Attendee, id = attendee_id)
-    if request.GET:
+    if request.method == 'GET':
         print("ggggggg")
-        return render(request, 'attendance/edit.html', {'attendee: attendee'})
-    elif request.POST:
+        return render(request, 'attendance/edit.html', {'attendee': attendee})
+    elif request.method == 'POST':
         try:
             attendee.first_name = request.POST['first_name']
             attendee.last_name = request.POST['last_name']
