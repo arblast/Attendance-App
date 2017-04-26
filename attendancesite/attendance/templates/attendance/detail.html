@@ -1,1 +1,10 @@
 <h1>{{ attendee.first_name |add:attendee.last_name}}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'attendance:edit' attendee.id %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="first_name" value="{{ attendee.first_name }}" />
+  <input type="text" name="last_name" value="{{ attendee.last_name }}" />
+  <input type="submit" value="Save" />
+</form>

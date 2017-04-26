@@ -2,7 +2,7 @@
 {% if attendee_list %}
     <ul>
     {% for attendee in attendee_list %}
-        <li><a href="{% url 'detail' attendee.id %}">{{ attendee.first_name }}</a></li>
+        <li><a href="{% url 'attendance:detail' attendee.id %}">{{ attendee.first_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
