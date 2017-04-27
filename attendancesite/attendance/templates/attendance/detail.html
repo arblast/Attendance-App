@@ -1,2 +1,3 @@
 <h1>{{ attendee.first_name |add:attendee.last_name}}</h1>
+<h2>Member is a {{ attendee.get_group_display }}</h2>
 <a href="{% url 'attendance:edit' attendee.id %}">Edit Info</a>

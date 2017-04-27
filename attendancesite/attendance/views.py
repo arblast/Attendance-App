@@ -18,7 +18,6 @@ def detail(request, attendee_id):
 def edit(request, attendee_id):
     attendee = get_object_or_404(Attendee, id = attendee_id)
     if request.method == 'GET':
-        print("ggggggg")
         return render(request, 'attendance/edit.html', {'attendee': attendee})
     elif request.method == 'POST':
         try:
