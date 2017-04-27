@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .models import Attendee
-
+from forms.attendee_form import AttendeeForm
 
 def index(request):
     attendee_list = Attendee.objects.all()
@@ -18,7 +18,8 @@ def detail(request, attendee_id):
 def edit(request, attendee_id):
     attendee = get_object_or_404(Attendee, id = attendee_id)
     if request.method == 'GET':
-        return render(request, 'attendance/edit.html', {'attendee': attendee})
+        form = AttendeeForm()
+        return render(request, 'attendance/edit.html', {'attendee': attendee, 'form': form})
     elif request.method == 'POST':
         try:
             attendee.first_name = request.POST['first_name']
