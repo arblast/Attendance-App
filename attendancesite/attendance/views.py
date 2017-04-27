@@ -18,17 +18,13 @@ def detail(request, attendee_id):
 def edit(request, attendee_id):
     attendee = get_object_or_404(Attendee, id = attendee_id)
     if request.method == 'GET':
-        form = AttendeeForm()
+        form = AttendeeForm(initial={'first_name': attendee.first_name, 'last_name': attendee.last_name, 'group': attendee.group})
         return render(request, 'attendance/edit.html', {'attendee': attendee, 'form': form})
     elif request.method == 'POST':
-        try:
-            attendee.first_name = request.POST['first_name']
-            attendee.last_name = request.POST['last_name']
-        except (KeyError):
-            return render(request, 'attendance/detail.html', {
-            'attendee': attendee,
-            'error_message': "You didn't enter a name.",
-            })
-        else:
+        form = AttendeeForm(request.POST)
+        if form.is_valid():
+            attendee.first_name = form.cleaned_data['first_name']
+            attendee.last_name = form.cleaned_data['last_name']
+            attendee.group = form.cleaned_data['group']
             attendee.save()
             return HttpResponseRedirect(reverse('attendance:detail', args=(attendee.id,)))
