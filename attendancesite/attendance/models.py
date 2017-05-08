@@ -19,3 +19,8 @@ class Attendee(models.Model):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+class AttendanceDay(models.Model):
+    date = models.DateField()
+    attendee = models.ForeignKey(Attendee, on_delete=models.CASCADE)
+    points = models.IntegerField()
