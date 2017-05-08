@@ -22,5 +22,5 @@ class Attendee(models.Model):
 
 class AttendanceDay(models.Model):
     date = models.DateField()
-    attendee = models.ForeignKey(Attendee, on_delete=models.CASCADE)
-    points = models.IntegerField()
+    attendee_id = models.ForeignKey(Attendee, on_delete=models.CASCADE)
+    points = models.IntegerField(default=0)

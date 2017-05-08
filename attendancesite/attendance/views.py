@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .models import Attendee
+from .models import AttendanceDay
 from forms.attendee_form import AttendeeForm
 
 def index(request):
@@ -28,3 +29,12 @@ def edit(request, attendee_id):
             attendee.group = form.cleaned_data['group']
             attendee.save()
             return HttpResponseRedirect(reverse('attendance:detail', args=(attendee.id,)))
+
+def add(request, attendee_id):
+    year = request.POST['year']
+    month = request.POST['month']
+    day = request.POST['day']
+    date = datetime.date(year, month, day)
+    attendanceday = AttendanceDay.create(date=date, attendee_id=attendee_id)
+    attendanceday.save()
+    return HttpResponseRedirect(reverse('attendance:detail', args=(attendee.id,)))
