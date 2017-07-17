@@ -7,6 +7,7 @@ from django.http import HttpResponse
 
 import datetime
 
+from attendanceapp.forms import LoginForm
 
 # Create your views here.
 
@@ -22,3 +23,16 @@ def viewArticle(request, articleId):
 def viewArticles(request, year, month):
    text = "Displaying articles of : %s/%s"%(year, month)
    return HttpResponse(text)
+
+def login(request):
+   username = "not logged in"
+
+   if request.method == "POST":
+      MyLoginForm = LoginForm(request.POST)
+
+      if MyLoginForm.is_valid():
+         username = MyLoginForm.cleaned_data['username']
+   else:
+      MyLoginForm = Loginform()
+
+   return render(request, 'loggedin.html', {"username" : username})
