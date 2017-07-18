@@ -33,6 +33,6 @@ def login(request):
       if MyLoginForm.is_valid():
          username = MyLoginForm.cleaned_data['username']
    else:
-      MyLoginForm = Loginform()
+      MyLoginForm = LoginForm()
 
    return render(request, 'loggedin.html', {"username" : username})
