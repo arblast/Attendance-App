@@ -8,6 +8,7 @@ from django.http import HttpResponse
 import datetime
 
 from attendanceapp.forms import LoginForm
+from attendanceapp.models import Attendee
 
 # Create your views here.
 
@@ -36,3 +37,7 @@ def login(request):
       MyLoginForm = LoginForm()
 
    return render(request, 'loggedin.html', {"username" : username})
+
+def AttendeeCreate(CreateView):
+   model = Attendee
+   fields = ['first_name', 'last_name', 'club']
