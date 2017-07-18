@@ -39,6 +39,6 @@ def login(request):
 
    return render(request, 'loggedin.html', {"username" : username})
 
-def AttendeeCreate(CreateView):
+class AttendeeCreate(CreateView):
    model = Attendee
    fields = ['first_name', 'last_name', 'club']
