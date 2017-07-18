@@ -9,6 +9,7 @@ import datetime
 
 from attendanceapp.forms import LoginForm
 from attendanceapp.models import Attendee
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 
