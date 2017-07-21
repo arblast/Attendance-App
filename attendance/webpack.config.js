@@ -1,17 +1,13 @@
-var path = require('path')
-var webpack = require('webpack')
-var BundleTracker = require('webpack-bundle-tracker')
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-  context: __dirname,
-  entry: './assets/js/index',
+  entry: './frontend/attendance.jsx',
   output: {
     path: path.resolve('./assets/bundles/'),
-    filename: '[name]-[hash].js',
+    filename: 'bundle.js',
   },
-
   plugins: [
-    new BundleTracker({filename: './webpack-stats.json'}),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -20,16 +16,18 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['react']
-      }}
+      {
+        test: [/\.jsx?$/, /\.js?$/],
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
+      }
     ]
   },
+  devtool: 'source-map',
   resolve: {
-    modulesDirectories: ['node_modules'],
-    extensions: ['','.js', '.jsx']
+    extensions: ['.js', '.jsx' ]
   }
-}
+};
