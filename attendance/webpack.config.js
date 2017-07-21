@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var BundleTracker = require('webpack-bundle-tracker')
 
 module.exports = {
   entry: './frontend/attendance.jsx',
@@ -8,6 +9,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   plugins: [
+    new BundleTracker({filename: './webpack-stats.json'}),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
