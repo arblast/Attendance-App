@@ -16,7 +16,7 @@ from django.views.generic.edit import CreateView
 
 def hello(request):
     today = datetime.datetime.now().date()
-    return redirect("https://www.djangoproject.com")
+    return render(request, "hello.html")
 
 def viewArticle(request, articleId):
    text = "Displaying article Number : %s"%articleId

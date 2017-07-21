@@ -1,7 +1,9 @@
+{% load render_bundle from webpack_loader %}
 <html>
 
    <body>
-      Hello World!!!<p>Today is {{today}}</p>
+      {% render_bundle ‘main’ %}
+      <div id="container"></div>
    </body>
 
 </html>
