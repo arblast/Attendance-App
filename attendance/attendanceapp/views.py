@@ -18,14 +18,6 @@ def hello(request):
     today = datetime.datetime.now().date()
     return render(request, "hello.html")
 
-def viewArticle(request, articleId):
-   text = "Displaying article Number : %s"%articleId
-   return redirect("articles", year = "2045", month = "02")
-
-def viewArticles(request, year, month):
-   text = "Displaying articles of : %s/%s"%(year, month)
-   return HttpResponse(text)
-
 def login(request):
    username = "not logged in"
 
