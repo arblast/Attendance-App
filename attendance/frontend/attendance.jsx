@@ -1,7 +1,7 @@
-var React = require('react')
-var ReactDOM = require('react-dom')
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-var Hello = React.createClass ({
+let Hello = React.createClass ({
     render: function() {
         return (
             <h1>
@@ -11,4 +11,7 @@ var Hello = React.createClass ({
     }
 })
 
-ReactDOM.render(<Hello />, document.getElementById('container'))
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.getElementById('root');
+  ReactDOM.render(<Hello/>, document.getElementById('root'));
+});
