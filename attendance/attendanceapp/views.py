@@ -9,7 +9,7 @@ import datetime
 
 from attendanceapp.forms import LoginForm
 from attendanceapp.models import Attendee
-from django.views.generic.edit import CreateView
+from django.views import View
 
 # Create your views here.
 
@@ -31,6 +31,7 @@ def login(request):
 
    return render(request, 'loggedin.html', {"username" : username})
 
-class AttendeeCreate(CreateView):
-   model = Attendee
-   fields = ['first_name', 'last_name', 'club']
+class Attendee(View):
+    title = 'Attendee List'
+    template = 'hello.html'
+    component = ''
