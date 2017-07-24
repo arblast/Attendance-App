@@ -35,3 +35,8 @@ class Attendee(View):
     title = 'Attendee List'
     template = 'hello.html'
     component = ''
+
+    def get(self, request):
+        props = {
+            'attendees': Attendee.all()
+        }
