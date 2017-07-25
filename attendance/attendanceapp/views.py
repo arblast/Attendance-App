@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 import datetime
 
@@ -37,6 +38,11 @@ class Attendee(View):
     component = ''
 
     def get(self, request):
+        attendees = Attendee.objects.all()
+        first_names = []
+        for attendee in attendees:
+            first_names.append(attendee.first_name)
         props = {
-            'attendees': Attendee.all()
+            'attendees': first_names
         }
+        return JsonRespose(props)
