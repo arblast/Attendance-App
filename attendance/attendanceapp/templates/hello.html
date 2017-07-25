@@ -2,7 +2,7 @@
 <html>
    <body>
       {% render_bundle 'main' %}
-      <div id="root"></div>
+      <div id="root">{% csrf_token %}</div>
    </body>
 
 </html>

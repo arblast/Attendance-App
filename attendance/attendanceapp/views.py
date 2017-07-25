@@ -48,6 +48,7 @@ class AttendeeView(View):
         return JsonResponse(props)
 
     def post(self, request):
+        print request.POST
         data = request.POST
         new_attendee = Attendee.new(data)
         new_attendee.save()
