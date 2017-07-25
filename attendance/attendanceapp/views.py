@@ -46,3 +46,10 @@ class Attendee(View):
             'attendees': first_names
         }
         return JsonRespose(props)
+
+    def post(self, request):
+        data = request.POST
+        new_attendee = Attendee.new(data)
+        new_attendee.save()
+        props = new_attendee
+        return JsonResponse(props)
