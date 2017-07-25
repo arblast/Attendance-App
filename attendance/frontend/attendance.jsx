@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 let Hello = () => {
         return (
             <h1>
-            Hello, React!
+            Welcome to Attendance App!
             </h1>
           )
         };
