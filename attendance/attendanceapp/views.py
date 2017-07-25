@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 
 import datetime
+import pdb
 
 from attendanceapp.forms import LoginForm
 from attendanceapp.models import Attendee
@@ -48,9 +49,12 @@ class AttendeeView(View):
         return JsonResponse(props)
 
     def post(self, request):
-        print request.POST
         data = request.POST
-        new_attendee = Attendee.new(data)
+        first_name = data.get("first_name")
+        last_name = data.get("last_name")
+        club = data.get("club")
+        new_attendee = Attendee(first_name = first_name, last_name = last_name,
+        club = club)
         new_attendee.save()
-        props = new_attendee
+        props = { 'attendee': new_attendee.first_name}
         return JsonResponse(props)

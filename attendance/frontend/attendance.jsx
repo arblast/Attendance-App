@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   window.test = () => { $.ajax({
     type: "POST",
-    data: {first_name: "test", last_name: "two", club: "Club"},
+    data: {first_name: "test", last_name: "three", club: "Club"},
     url: "/attendanceapp/attendee/",
     success: (e) => console.log(e),
     error: (e) => console.log(e)
