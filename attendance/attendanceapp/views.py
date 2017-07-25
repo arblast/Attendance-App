@@ -32,7 +32,7 @@ def login(request):
 
    return render(request, 'loggedin.html', {"username" : username})
 
-class Attendee(View):
+class AttendeeView(View):
     title = 'Attendee List'
     template = 'hello.html'
     component = ''
@@ -45,7 +45,7 @@ class Attendee(View):
         props = {
             'attendees': first_names
         }
-        return JsonRespose(props)
+        return JsonResponse(props)
 
     def post(self, request):
         data = request.POST
