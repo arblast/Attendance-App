@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'^hello/', views.hello, name='hello'),
     url(r'^connection/', TemplateView.as_view(template_name = 'login.html')),
     url(r'^login/', views.login, name = 'login'),
-    url(r'^attendee/new', Attendee.as_view(), name = 'attendee'),
+    url(r'^attendee/', Attendee.as_view(), name = 'attendee'),
 ]
