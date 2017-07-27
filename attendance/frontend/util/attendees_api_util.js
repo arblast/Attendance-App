@@ -1,5 +1,3 @@
-let csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-
 export const fetchAttendees = (success, error) => {
   $.ajax({
     type: "GET",
