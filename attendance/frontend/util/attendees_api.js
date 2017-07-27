@@ -6,3 +6,13 @@ export const fetchAttendees = (success, error) => {
     error
   });
 };
+
+export const createAttendee = (attendeeParams, success, error) => {
+  $.ajax({
+    type: "POST",
+    data: attendeeParams,
+    url: "/attendanceapp/attendee/",
+    success,
+    error
+  });
+}
