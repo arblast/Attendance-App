@@ -1,3 +1,5 @@
+let csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
 export const fetchAttendees = (success, error) => {
   $.ajax({
     type: "GET",
@@ -7,9 +9,10 @@ export const fetchAttendees = (success, error) => {
   });
 };
 
-export const createAttendee = (attendeeParams, success, error) => {
+export const createAttendee = (attendeeParams, token, success, error) => {
   $.ajax({
     type: "POST",
+    headers: {'X-CSRFToken': token},
     data: attendeeParams,
     url: "/attendanceapp/attendee/",
     success,
