@@ -21,5 +21,8 @@
     "redux": "^3.7.2",
     "webpack": "^3.3.0",
     "webpack-bundle-tracker": "^0.2.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
   }
 }
