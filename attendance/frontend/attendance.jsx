@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from './store/store';
+import configureStore from './store/store.js';
+import {fetchAttendees} from './actions/attendees_actions.js';
 
 let Hello = () => {
         return (
@@ -15,5 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
   let store = configureStore();
   ReactDOM.render(<Hello/>, document.getElementById('root'));
+  window.fetchAttendees = fetchAttendees();
   window.store = store;
 });
