@@ -64,3 +64,13 @@ class DateView(View):
         attended_dates = AttendedDates.objects.filter(date=date)
         props = { 'dates': attended_dates}
         return JsonResponse(props)
+
+    def post(self, request):
+        data = request.POST
+        date = data.get("date")
+        attendee_id = data.get("attendee_id")
+        attendee = Attendee.objects.filter(id = attendee_id)
+        attended_date = AttendedDate(date = date, attendee = attendee)
+        attended_date.save()
+        props = { 'attendee': attendee }
+        return JsonResponse(props)
