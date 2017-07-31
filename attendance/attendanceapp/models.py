@@ -11,9 +11,6 @@ class Attendee(models.Model):
     last_name = models.CharField(max_length = 50)
     club = models.CharField(max_length = 7)
 
-class Date(models.Model):
-    date = datetime.date
-
 class AttendedDates(models.Model):
     attendee = models.ForeignKey(Attendee, on_delete=models.CASCADE)
-    date = models.ForeignKey(Date, on_delete=models.CASCADE)
+    date = datetime.date
