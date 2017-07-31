@@ -11,6 +11,7 @@ import pdb
 
 from attendanceapp.forms import LoginForm
 from attendanceapp.models import Attendee
+from attendanceapp.models import AttenddedDates
 from django.views import View
 
 # Create your views here.
@@ -34,9 +35,6 @@ def login(request):
    return render(request, 'loggedin.html', {"username" : username})
 
 class AttendeeView(View):
-    title = 'Attendee List'
-    template = 'hello.html'
-    component = ''
 
     def get(self, request):
         attendees = Attendee.objects.all()
@@ -57,4 +55,12 @@ class AttendeeView(View):
         club = club)
         new_attendee.save()
         props = { 'attendee': new_attendee.first_name}
+        return JsonResponse(props)
+
+class DateView(View):
+
+    def get(self, request):
+        date = request.GET.get("date")
+        attended_dates = AttendedDates.objects.filter(date=date)
+        props = { 'dates': attended_dates}
         return JsonResponse(props)
