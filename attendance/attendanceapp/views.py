@@ -11,7 +11,7 @@ import pdb
 
 from attendanceapp.forms import LoginForm
 from attendanceapp.models import Attendee
-from attendanceapp.models import AttendedDates
+from attendanceapp.models import AttendedDate
 from django.views import View
 
 # Create your views here.
