@@ -13,4 +13,4 @@ class Attendee(models.Model):
 
 class AttendedDate(models.Model):
     attendee = models.ForeignKey(Attendee, on_delete=models.CASCADE)
-    date = datetime.date
+    date = models.DateField()
