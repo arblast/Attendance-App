@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^connection/', TemplateView.as_view(template_name = 'login.html')),
     url(r'^login/', views.login, name = 'login'),
     url(r'^attendee/', AttendeeView.as_view(), name = 'attendee'),
-    url(r'^date/([0-9]{2})/([0-9]{2})/([0-9]{4})', DateView.as_view(), name = 'date'),
+    url(r'^date/', DateView.as_view(), name = 'date'),
 ]
