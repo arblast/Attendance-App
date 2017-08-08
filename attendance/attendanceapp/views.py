@@ -65,8 +65,9 @@ class DateView(View):
         month = data.month
         day = data.day
         date = datetime.date(year, month, day)
-        attended_dates = AttendedDates.objects.filter(date=date)
-        props = { 'dates': attended_dates}
+        attended_date = AttendedDates.objects.filter(date=date)[0]
+        attendees = attended_date.attendees.all()
+        props = { 'attendees': attendees}
         return JsonResponse(props)
 
     def post(self, request):
