@@ -59,11 +59,7 @@ class AttendeeView(View):
 
 class DateView(View):
 
-    def get(self, request):
-        data = request.GET.get("date")
-        year = data.year
-        month = data.month
-        day = data.day
+    def get(self, request, year, month, day):
         date = datetime.date(year, month, day)
         attended_date = AttendedDates.objects.filter(date=date)[0]
         attendees = attended_date.attendees.all()
