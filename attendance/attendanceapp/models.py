@@ -12,5 +12,5 @@ class Attendee(models.Model):
     club = models.CharField(max_length = 7)
 
 class AttendedDate(models.Model):
-    attendee = models.ForeignKey(Attendee, on_delete=models.CASCADE)
-    date = models.ForeignKey(Date, on_delete=models.CASCADE)
+    date = models.DateField()
+    attendees = models.ManyToManyField(Attendee)
