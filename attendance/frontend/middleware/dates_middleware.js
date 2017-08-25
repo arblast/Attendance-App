@@ -9,7 +9,7 @@ const DateMiddleware = store => next => action => {
       createDate(action.dateParams, success, error);
       return next(action);
     case FETCH_DATE:
-      fetchDate(success, error);
+      fetchDate(action.dateParams, success, error);
       return next(action);
     default:
       return next(action);

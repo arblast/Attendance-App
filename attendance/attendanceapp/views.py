@@ -60,9 +60,12 @@ class AttendeeView(View):
 class DateView(View):
 
     def get(self, request, year, month, day):
-        date = datetime.date(year, month, day)
-        attended_date = AttendedDates.objects.filter(date=date)[0]
-        attendees = attended_date.attendees.all()
+
+        date = datetime.date(int(year), int(month), int(day))
+        attended_date = AttendedDate.objects.filter(date=date)[0]
+        attendees = []
+        for attendee in attended_date.attendees.all():
+            attendees.append({'first_name': attendee.first_name, 'last_name': attendee.last_name})
         props = { 'attendees': attendees}
         return JsonResponse(props)
 
