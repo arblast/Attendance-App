@@ -10,10 +10,12 @@ export const createDate = (dateParams, token, success, error) => {
 }
 
 export const fetchDate = (dateParams, success, error) => {
+  let year = dateParams.year;
+  let month = dateParams.month;
+  let day = dateParams.day;
   $.ajax({
     type: "GET",
-    data: dateParams,
-    url: "/attendanceapp/date/",
+    url: `/attendanceapp/date/${year}/${month}/${day}`,
     success,
     error
   });
