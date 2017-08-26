@@ -1,4 +1,5 @@
-import {CREATE_DATE, FETCH_DATE, receiveAttendees} from '../actions/dates_actions.js';
+import {CREATE_DATE, FETCH_DATE} from '../actions/dates_actions.js';
+import {receiveAttendees} from '../actions/attendees_actions.js';
 import {fetchDate, createDate} from '../util/dates_api_util.js';
 
 const DateMiddleware = store => next => action => {
