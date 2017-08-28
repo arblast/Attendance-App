@@ -75,7 +75,8 @@ class DateView(View):
         date = datetime.date(int(date_obj.year), int(date_obj.month), int(date_obj.day))
         attendee_id = data.get("attendee_id")
         attendee = Attendee.objects.filter(id = attendee_id)
-        attended_date = AttendedDate(date = date, attendee = attendee)
+        attended_date = AttendedDate(date = date)
+        attended_date.attendees.add(attendee)
         attended_date.save()
         props = { 'attendee': attendee }
         return JsonResponse(props)
