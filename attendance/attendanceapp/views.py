@@ -71,7 +71,8 @@ class DateView(View):
 
     def post(self, request):
         data = request.POST
-        date = data.get("date")
+        date_obj = data.get("date")
+        date = datetime.date(int(date_obj.year), int(date_obj.month), int(date_obj.day))
         attendee_id = data.get("attendee_id")
         attendee = Attendee.objects.filter(id = attendee_id)
         attended_date = AttendedDate(date = date, attendee = attendee)
