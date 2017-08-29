@@ -18,5 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Hello/>, document.getElementById('root'));
   window.createDate = createDate;
   window.fetchDate = fetchDate;
+  window.dateParams = {date: {year: 2017, month: 8, day: 26}, attendee_id: 1, token: csrftoken};
   window.store = store;
 });

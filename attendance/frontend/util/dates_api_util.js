@@ -1,7 +1,7 @@
-export const createDate = (dateParams, token, success, error) => {
+export const createDate = (dateParams, success, error) => {
   $.ajax({
     type: "POST",
-    headers: {'X-CSRFToken': token},
+    headers: {'X-CSRFToken': dateParams.token},
     data: dateParams,
     url: "/attendanceapp/date/",
     success,

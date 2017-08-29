@@ -7,10 +7,10 @@ export const fetchAttendees = (success, error) => {
   });
 };
 
-export const createAttendee = (attendeeParams, token, success, error) => {
+export const createAttendee = (attendeeParams, success, error) => {
   $.ajax({
     type: "POST",
-    headers: {'X-CSRFToken': token},
+    headers: {'X-CSRFToken': attendeeParams.token},
     data: attendeeParams,
     url: "/attendanceapp/attendee/",
     success,
