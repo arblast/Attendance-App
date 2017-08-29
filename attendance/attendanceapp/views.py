@@ -57,9 +57,7 @@ class AttendeeView(View):
         props = { 'attendee': new_attendee.first_name}
         return JsonResponse(props)
 
-class DateView(View):
-
-    def get(self, request, year, month, day):
+def get_date(request, year, month, day):
 
         date = datetime.date(int(year), int(month), int(day))
         attended_date = AttendedDate.objects.filter(date=date)[0]
@@ -69,7 +67,7 @@ class DateView(View):
         props = { 'attendees': attendees}
         return JsonResponse(props)
 
-    def post(self, request):
+def create_date(request):
         data = request.POST
         date_obj = data.get("date")
         date = datetime.date(int(date_obj.year), int(date_obj.month), int(date_obj.day))

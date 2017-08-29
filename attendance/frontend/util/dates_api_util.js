@@ -3,7 +3,7 @@ export const createDate = (dateParams, success, error) => {
     type: "POST",
     headers: {'X-CSRFToken': dateParams.token},
     data: dateParams,
-    url: "/attendanceapp/date/",
+    url: "/attendanceapp/date/create",
     success,
     error
   });
