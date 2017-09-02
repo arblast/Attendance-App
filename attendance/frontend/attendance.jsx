@@ -14,6 +14,7 @@ let Hello = () => {
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   let csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+  window.token = csrftoken;
   let store = configureStore();
   ReactDOM.render(<Hello/>, document.getElementById('root'));
   window.createDate = createDate;

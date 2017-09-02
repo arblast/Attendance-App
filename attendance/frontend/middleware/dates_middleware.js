@@ -4,7 +4,7 @@ import {fetchDate, createDate} from '../util/dates_api_util.js';
 
 const DateMiddleware = store => next => action => {
   let success = (data) => store.dispatch(receiveAttendees(data.attendees));
-  let error = (data) => console.log(error);
+  let error = (data) => console.log(data);
   switch(action.type) {
     case CREATE_DATE:
       createDate(action.dateParams, success, error);
