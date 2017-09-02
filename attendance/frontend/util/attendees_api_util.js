@@ -11,7 +11,7 @@ export const createAttendee = (attendeeParams, success, error) => {
   $.ajax({
     type: "POST",
     headers: {'X-CSRFToken': attendeeParams.token},
-    data: attendeeParams,
+    data: attendeeParams.params,
     url: "/attendanceapp/attendee/",
     success,
     error

@@ -68,13 +68,11 @@ def get_date(request, year, month, day):
         return JsonResponse(props)
 
 def create_date(request):
-        data = request.POST
-        date_obj = data.get("date")
-        date = datetime.date(int(date_obj.year), int(date_obj.month), int(date_obj.day))
-        attendee_id = data.get("attendee_id")
-        attendee = Attendee.objects.filter(id = attendee_id)
-        attended_date = AttendedDate(date = date)
+        date_obj = request.POST
+        date = datetime.date(int(date_obj.get('year')), int(date_obj.get('month')), int(date_obj.get('day')))
+        attendee_id = int(date_obj.get("attendee_id"))
+        attendee = Attendee.objects.filter(id = attendee_id)[0]
+        attended_date = AttendedDate.objects.get_or_create(date = date)[0]
         attended_date.attendees.add(attendee)
-        attended_date.save()
-        props = { 'attendee': attendee }
+        props = { 'attendee': attendee.first_name }
         return JsonResponse(props)
